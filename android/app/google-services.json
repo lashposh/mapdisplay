@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677484455131",
+    "project_id": "wastemanage-a0058",
+    "storage_bucket": "wastemanage-a0058.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677484455131:android:9ece1b1e5a7965c314d8fe",
+        "android_client_info": {
+          "package_name": "com.example.flutter_appl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkiZvYSOvcruaTmuMbTN7BC4gQOAcd5e8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

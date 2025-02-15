@@ -21,26 +21,24 @@ class _AdminHomePageState extends State<AdminHomePage> {
         throw Exception('Please enter both title and message');
       }
 
-      // Ensure user is authenticated
       final user = _auth.currentUser;
       if (user == null) {
         throw Exception('You must be logged in to send broadcasts');
       }
 
-      // Create a new broadcast entry
       await _database.ref().child('broadcasts').push().set({
         'title': _titleController.text,
         'message': _messageController.text,
         'timestamp': ServerValue.timestamp,
         'sender': user.uid,
-        'senderEmail': user.email
+        'senderEmail': user.email,
+        'confirmations': {} // Initialize empty map for confirmations
       });
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Broadcast message sent successfully')),
         );
-        // Clear the text fields
         _messageController.clear();
         _titleController.clear();
       }

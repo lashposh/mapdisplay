@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'register.dart';  // Import the RegisterPage
+import 'register.dart'; // Import the RegisterPage
 import 'user_home_page.dart'; // Import the UserHomePage
 import 'collector_home_page.dart'; // Import the CollectorHomePage
 import 'admin_home.dart'; // Import the AdminHomePage
@@ -33,7 +33,8 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -91,7 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                       // Dropdown for Role Selection
                       DropdownButtonFormField<String>(
                         value: selectedRole,
-                        items: ['User', 'Collector', 'Admin'].map((String role) {
+                        items:
+                            ['User', 'Collector', 'Admin'].map((String role) {
                           return DropdownMenuItem<String>(
                             value: role,
                             child: Text(role),
@@ -120,8 +122,12 @@ class _LoginPageState extends State<LoginPage> {
                               if (_formKey.currentState!.validate()) {
                                 try {
                                   // Sign in user
-                                  UserCredential userCredential = await FirebaseAuth.instance
-                                      .signInWithEmailAndPassword(email: email!, password: password!);
+                                  UserCredential userCredential =
+                                      await FirebaseAuth
+                                          .instance
+                                          .signInWithEmailAndPassword(
+                                              email: email!,
+                                              password: password!);
 
                                   // Get the user's role from Firestore and navigate accordingly
                                   var userDoc = await FirebaseFirestore.instance
@@ -135,17 +141,22 @@ class _LoginPageState extends State<LoginPage> {
                                   if (role == 'User') {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const UserHomePage()),
+                                      MaterialPageRoute(
+                                          builder: (context) => UserHomePage()),
                                     );
                                   } else if (role == 'Collector') {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const CollectorHomePage()),
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CollectorHomePage()),
                                     );
                                   } else if (role == 'Admin') {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const AdminHomePage()),
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AdminHomePage()),
                                     );
                                   }
                                 } catch (e) {
@@ -156,12 +167,14 @@ class _LoginPageState extends State<LoginPage> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 80, vertical: 14),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            child: const Text('Login', style: TextStyle(fontSize: 16)),
+                            child: const Text('Login',
+                                style: TextStyle(fontSize: 16)),
                           ),
                         ],
                       ),
@@ -172,7 +185,8 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const RegisterPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => const RegisterPage()),
                             );
                           },
                           child: const Text('Don\'t have an account? Register'),
